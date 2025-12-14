@@ -48,6 +48,28 @@ import java.util.*;
  * Time Complexity: O(n * k) where n is the number of strings and k is the maximum length of a string
  * Space Complexity: O(n * k) for storing all strings in the hash map
  */
+-------------------------------------------------------------
+    class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String,List<String>> map =  new HashMap<>();
+        for(String s:strs){
+            int[] chars = new int[26];
+            for(int i=0;i<s.length();i++){
+                chars[s.charAt(i)-'a']++;
+            }
+           map.computeIfAbsent(Arrays.toString(chars), k -> new ArrayList<>()).add(s);
+           }
+
+        return new ArrayList<>(map.values());
+
+    }
+}
+
+Time: O(n × k)
+Space: O(n × k)
+(n = number of strings, k = max length)
+-----------------------------------------------------------------------------------------
+
 public class GroupAnagrams {
     
     /**
